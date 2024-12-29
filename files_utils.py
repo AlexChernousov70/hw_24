@@ -1,7 +1,6 @@
 import json
 import yaml
 
-
 # функция для чтения данных из json файла
 def read_json(file_path: str, encoding: str = "utf-8"):
     """
@@ -103,7 +102,7 @@ data_to_append_json = {
         }
 
 
-### Функции для работы с CSV:
+# Функции для работы с CSV:
 def read_csv(file_path, delimiter=';', encoding='windows-1251'):
     """
     Читает данные из CSV-файла без использования модуля csv.
@@ -182,11 +181,11 @@ def append_csv(data, file_path, delimiter=';', encoding='windows-1251'):
     except Exception as e:
         print(f"Ошибка при добавлении данных в файл: {e}")
 
-data_to_append_json = [
+data_to_append_csv = [
     ['Charlie', 22, 'Chicago']
 ]
 
-### Функции для работы с TXT:
+# Функции для работы с TXT:
 def read_txt(file_path, encoding="utf-8"):
     """
     Читает данные из текстового файла.
@@ -226,6 +225,8 @@ def write_txt(data, file_path, encoding="utf-8"):
     except Exception as e:
         print(f"Ошибка при записи в файл: {e}")
 
+data_to_write_txt = "Это строка для записи в файл."
+
 def append_txt(data, file_path, encoding="utf-8"):
     """
     Добавляет данные в конец текстового файла.
@@ -247,27 +248,9 @@ def append_txt(data, file_path, encoding="utf-8"):
     except Exception as e:
         print(f"Ошибка при добавлении данных в файл: {e}")
 
-### Функция для работы с YAML:
-def read_yaml(file_path):
-    """
-    Читает данные из YAML-файла.
-    
-    Входные параметры:
-    `file_path`: Путь к файлу.
-    
-    Возвращаемое значение: Данные, считанные из файла (словарь, список или другой тип данных).
-    """
-    try:
-        with open(file_path, mode='r', encoding='utf-8') as file:
-            data = yaml.safe_load(file)
-        return data
-    except FileNotFoundError:
-        print(f"Ошибка: Файл '{file_path}' не найден.")
-    except yaml.YAMLError as e:
-        print(f"Ошибка при чтении YAML-файла: {e}")
-    except Exception as e:
-        print(f"Произошла ошибка: {e}")
-    return None
+data_to_append_txt = "Это строка для добавления в файл."
+
+
 
 def main():
     print('выполнение main')
@@ -277,6 +260,12 @@ def main():
     read_csv('test.csv')
     write_csv(data_to_write_csv, 'test.csv')
     append_csv(data_to_append_csv, 'test.csv')
+    read_txt('test.txt')
+    write_txt(data_to_write_txt, 'test.txt')
+    append_txt(data_to_append_txt, 'test.txt')
+
+
+
 
 if __name__ == '__main__':
     main()
